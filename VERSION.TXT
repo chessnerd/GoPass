@@ -5,9 +5,9 @@
 			now choose to limit the types of symbols that can be used, or to not use symbols at all. It is recommended
 			to use as many symbols as the service in question will allow.
 			
-		Now warns the user if the generated password is shorter than 12 characters as that may not be very secure.
+	Now warns the user if the generated password is shorter than 12 characters as that may not be very secure.
 
-		Update of seed conversion and password generation methods
+	Update of seed conversion and password generation methods
 		-	Previously, seeds were simply converted directly into long integer values. This could lead to collisions
 			(i.e. different seeds had the same value). Now seed characters also have their value multiplied by 
 			their position in the seed. This means that even anagrams are unlikely to have the same value.
@@ -18,4 +18,4 @@
 			if the same seed is used or if there is a collision with two seeds. Basically, move 1 now helps to determine
 			the value of move 2, which helps to determine the value of move 3, and so on.
 			
-		Additionally, there were source code and performance improvements.
+	Additionally, there were source code and performance improvements. And the source code was also uploaded to GitHub.

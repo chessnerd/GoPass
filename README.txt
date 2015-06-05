@@ -1,6 +1,6 @@
 # GoPass
 
-About: 
+// // ABOUT // //
 
 GoPass is a password generator. Its function is similar to random password generators, but the generation method is very different. This program generates passwords based on opening moves in a go game.
 
@@ -12,11 +12,11 @@ Because go players can remember game moves so well, it allows you to use unique 
 
 Eight moves is the recommended minimum for generating a password. This will produce a 16 character password of upper and lower case letters, numbers, and symbols. Those 16 characters could be hard to remember but, as long as you know what seed you used, you can recreate the password later by entering the moves in the same order again.
 
-This software is released under the MIT License.
+This software is released under an MIT License. You can find the source code at https://github.com/chessnerd/GoPass
 
----
 
-How to use:
+
+// // HOW TO USE // //
 
 First, make sure the computer you are using has Java installed.
 
@@ -38,14 +38,14 @@ Later on, when you need to enter the password again, just open up GoPass, enter 
 
 Because this is written as a stand-alone JAR, any computer with Java can run it (be that computer Windows, Mac, or Linux) meaning you can take it with you on a flash drive or download it again later.
 
----
 
-History: 
 
-2015-03-01	: Code first uploaded to SourceForge
+// // HISTORY // // 
 
-2015-03-02	: Graphics bugfixes and performance improvements
+2015-03-01  	: Code first uploaded to SourceForge
 
-2015-06-02	: Version 1.1 - added features, changed seed conversion/password generation methods - see VERSION.TXT for details
+2015-03-02  	: Graphics bugfixes and performance improvements
 
-2015-06-05  : Code first uploaded to GitHub
+2015-06-02  	: Version 1.1 - added features, changed seed conversion/password generation methods - see VERSION.TXT for details
+
+2015-06-05  	: Code first uploaded to GitHub
