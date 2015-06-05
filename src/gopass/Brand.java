@@ -40,7 +40,7 @@ public class Brand {
 			+ COPYRIGHT_HOLDER + ", All Rights Reserved";
 	
 	/** The website information */
-	public static final String WEBSITE = "sourceforge.net/projects/gopass/";
+	public static final String WEBSITE = "github.com/chessnerd/GoPass/";
 
 	/** The default font for GUI elements */
 	public static final Font FONT = new Font("monospaced", Font.PLAIN, 12);
