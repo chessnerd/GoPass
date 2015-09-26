@@ -49,3 +49,5 @@ Because this is written as a stand-alone JAR, any computer with Java can run it 
 2015-06-02  	: Version 1.1 - added features, changed seed conversion/password generation methods - see VERSION.TXT for details
 
 2015-06-05  	: Code first uploaded to GitHub
+
+2015-09-26		: Version 1.1.1 - performance improvements and code cleanup

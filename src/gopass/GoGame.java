@@ -1,10 +1,13 @@
 package gopass;
 
+import gopass.engine.RecordBook;
+
 /**
  * Defines a go game
  * 
  * @author Jason Mey
- * @version 1.0
+ * @version 1.1
+ * @version 9/26/2015
  */
 public interface GoGame {
 
@@ -47,4 +50,9 @@ public interface GoGame {
 	 * @return whether or not stones were captured on the previous turn
 	 */
 	public boolean stonesCapped();
+	
+	/**
+	 * @return the record of the game
+	 */
+	public RecordBook getRecordBook();
 }

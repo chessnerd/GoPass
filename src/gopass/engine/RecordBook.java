@@ -40,6 +40,24 @@ public class RecordBook {
    public Record getRecord(int turn) {
       return records.get(turn);
    }
+   
+   /**
+    * Checks to see if an intersection has been played on during the game
+    * 
+    * @param x the x-coordinate of the move
+    * @param y the y-coordinate of the move
+    * @return whether or not the move was played
+    */
+   public boolean beenPlayed(int x, int y) {
+	   // Check through the game to see if that intersection has ever been played on
+	   for (int i = 0; i < records.size(); i++) {
+		   Record r = records.get(i);
+		   if (r.getXCoor() == x && r.getYCoor() == y) {
+			   return true;
+		   }
+	   }
+	   return false;
+   }
 
    /**
     * Prints out the records in human-readable form

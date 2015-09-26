@@ -16,8 +16,8 @@ import gopass.GoGame;
  * Creates a go board using a Graphics object
  * 
  * @author Jason Mey
- * @version 1.6
- * @version 6/2/2015
+ * @version 1.6.1
+ * @version 9/26/2015
  */
 @SuppressWarnings("serial")
 public class GraphicBoard extends Canvas implements GoBoard {
@@ -113,15 +113,67 @@ public class GraphicBoard extends Canvas implements GoBoard {
 	 * @param g the graphics object being used
 	 */
 	public void paint(Graphics g) {
-		update(g, true);
+		// Wipe the board clear
+		drawBoard();
+			
+		// Draw every stone that is actually on the board
+		for (int i = 0; i < getRowNum(); i++) {
+			for (int j = 0; j < getColNum(); j++) {
+				// Draw the appropriate stone if the intersection isn't empty
+				if (getStoneAt(i, j) != EMPTY) {
+					updateIntersection(new Point(i, j));
+				}
+			}
+		}
 	}
 
 	/**
-	 * Draws or re-draws the entire board as blank
+	 * Method called on repaint()
 	 * 
 	 * @param g the graphics object being used
 	 */
-	private void drawBoard(Graphics g) {
+	public void update(Graphics g) {
+		// Erases the previous temporary stone (if needed)
+		if (!prevTemp.getLocation().equals(OFF_BOARD)) {
+			updateIntersection(prevTemp);
+		}
+	
+		// Draws the temporary stone (if needed)
+		if (!getTemp().getLocation().equals(OFF_BOARD)) {
+			// Assume it's Black's turn...
+			Color tempColor = BLACK_TEMP_STONE;
+	
+			// Otherwise, set the stone color to White
+			if (getCurrentPlayer() == GoBoard.WHITE) {
+				tempColor = WHITE_TEMP_STONE;
+			}
+	
+			// Draw the temporary stone
+			drawStone((int) (getTemp().getX()), (int) (getTemp().getY()),
+					tempColor, g);
+		}
+	
+	}
+	
+	public void captureUpdate() {
+		// Draw every stone that is actually on the board
+		for (int i = 0; i < getRowNum(); i++) {
+			for (int j = 0; j < getColNum(); j++) {
+				// Draw the appropriate stone if the intersection isn't empty
+				if (getStoneAt(i, j) == EMPTY && game.getRecordBook().beenPlayed(i, j)) {
+					updateIntersection(new Point(i, j));
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Draws or re-draws the entire board as blank
+	 */
+	private void drawBoard() {
+		// Get the board's graphics object
+		Graphics g = this.getGraphics();
+		
 		// Define these variables here because we're going to be
 		// working with them a lot
 		int width = this.getWidth();
@@ -188,57 +240,6 @@ public class GraphicBoard extends Canvas implements GoBoard {
 				- getStoneWidth() / 2 + getLineWidth() / 2, getStoneWidth(),
 				getStoneWidth());
 		g.setColor(prevColor);
-	}
-
-	/**
-	 * Method called on repaint()
-	 * 
-	 * @param g the graphics object being used
-	 */
-	public void update(Graphics g) {
-		// Erases the previous temporary stone (if needed)
-		if (!prevTemp.getLocation().equals(OFF_BOARD)) {
-			updateIntersection(prevTemp);
-		}
-
-		// Draws the temporary stone (if needed)
-		if (!getTemp().getLocation().equals(OFF_BOARD)) {
-			// Assume it's Black's turn...
-			Color tempColor = BLACK_TEMP_STONE;
-
-			// Otherwise, set the stone color to White
-			if (getCurrentPlayer() == GoBoard.WHITE) {
-				tempColor = WHITE_TEMP_STONE;
-			}
-
-			// Draw the temporary stone
-			drawStone((int) (getTemp().getX()), (int) (getTemp().getY()),
-					tempColor, g);
-		}
-
-	}
-
-	/**
-	 * Forces a full update of the board if true
-	 * 
-	 * This can be used to redraw the board after a capture
-	 * 
-	 * @param graphics the board's graphics object
-	 * @param force whether or not to force an update
-	 */
-	public void update(Graphics g, boolean force) {
-		if (force) {
-			// Wipe the board clear
-			drawBoard(g);
-
-			// Draw every stone that is actually on the board
-			for (int i = 0; i < getRowNum(); i++) {
-				for (int j = 0; j < getColNum(); j++) {
-					updateIntersection(new Point(i, j));
-				}
-			}
-		}
-
 	}
 
 	/**

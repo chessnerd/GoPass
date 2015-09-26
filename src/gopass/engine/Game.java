@@ -7,7 +7,7 @@ import gopass.GoGame;
  * The logic of a Go game
  * 
  * @author Jason Mey
- * @version 1.0
+ * @version 1.1
  */
 public class Game implements GoGame {
 
@@ -147,7 +147,6 @@ public class Game implements GoGame {
 				blackCap += suiNumCap;
 			}
 			board.place(x, y, GoBoard.EMPTY);
-			System.out.println(board.getStoneAt(x, y));
 		}
 		// Recreate the checked liberties 2D array
 		for (int i = 0; i < checkedLiberties.length; i++) {

@@ -6,6 +6,7 @@ import gopass.GoGame;
 import gopass.engine.EncodeBoard;
 import gopass.engine.Game;
 import gopass.engine.Record;
+import gopass.engine.RecordBook;
 import gopass.gui.AboutDialog;
 
 import java.awt.BorderLayout;
@@ -25,8 +26,8 @@ import javax.swing.JPasswordField;
  * The main GUI window
  * 
  * @author Jason Mey
- * @version 1.1
- * @version 3/30/2015
+ * @version 1.1.1
+ * @version 9/26/2015
  */
 @SuppressWarnings("serial")
 public class GoGUI extends JFrame implements GoGame {
@@ -67,22 +68,12 @@ public class GoGUI extends JFrame implements GoGame {
 	 * Creates a GUI with a board of the default (19x19) size
 	 */
 	public GoGUI() {
-		this(19, 19);
-	}
-
-	/**
-	 * Creates a GUI with a board of defined size
-	 * 
-	 * @param rows number of rows
-	 * @param cols number of columns
-	 */
-	public GoGUI(int rows, int cols) {
 		super(Brand.APP_NAME + " " + Brand.VERSION);
 
-		// Create a new go game and remember the board size
+		// Create a new GUI with a 19x19 board
+		this.rows = 19;
+		this.cols = 19;
 		game = new Game(rows, cols);
-		this.rows = rows;
-		this.cols = cols;
 
 		// Place the help information at the top of the frame
 		JPanel northPanel = new JPanel(new GridLayout(2, 1));
@@ -254,9 +245,9 @@ public class GoGUI extends JFrame implements GoGame {
 
 		game.play(x, y);
 
-		// If there was a capture, force a board update
+		// If there was a capture, force a whole board update
 		if (blackCap != game.getBlackCap() || whiteCap != game.getWhiteCap()) {
-			board.update(board.getGraphics(), true);
+			board.captureUpdate();
 		}
 	}
 
@@ -274,6 +265,10 @@ public class GoGUI extends JFrame implements GoGame {
 
 	public int getTurn() {
 		return game.getTurn();
+	}
+	
+	public RecordBook getRecordBook() {
+		return game.getRecordBook();
 	}
 
 	/**

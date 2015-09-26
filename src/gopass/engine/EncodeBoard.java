@@ -7,8 +7,8 @@ import java.util.Random;
  * 
  * @author Jason Mey
  * 
- * @version 1.1
- * @version 3/30/2015
+ * @version 1.1.1
+ * @version 9/26/2015
  */
 public class EncodeBoard {
 
@@ -63,13 +63,7 @@ public class EncodeBoard {
 			for (int j = 0; j < BOARD_SIZE; j++) {
 				board[i][j] = "";
 				for (int x = 0; x < charPerMove; x++) {
-					if (useSymbols == USE_ALL_SYMBOLS) {
-						board[i][j] = board[i][j] + getRandChar();
-					} else if (useSymbols == USE_SOME_SYMBOLS) {
-						board[i][j] = board[i][j] + getSelectSymbol();
-					} else {
-						board[i][j] = board[i][j] + getNonSymbol();
-					}
+					board[i][j] = board[i][j] + getRandChar();
 				}
 			}
 		}

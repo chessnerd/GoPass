@@ -12,8 +12,8 @@ import javax.swing.ImageIcon;
  * 
  * @author Jason Mey
  * 
- * @version 1.1
- * @version 6/2/2015
+ * @version 1.1.1
+ * @version 9/26/2015
  */
 public class Brand {
 
@@ -49,7 +49,7 @@ public class Brand {
 	public static final String VERSION = "1.1";
 
 	/** The full version number */
-	public static final String FULL_VERSION = "1.1.0";
+	public static final String FULL_VERSION = "1.1.1";
 
 	/**
 	 * Get the brand icon
